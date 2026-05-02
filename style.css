@@ -124,6 +124,7 @@ form {
     }
 }
 
+/* resume formatting */
 .resume-contact {
     ul {
         display: flex;
@@ -208,4 +209,72 @@ form {
     dd {
         font-size: 3em;
     }
+}
+
+/* projects page plot */
+.container {
+    display: flex;
+    gap: 3em;
+    align-items: center;
+}
+
+#projects-plot {
+
+    .selected {
+        /*--color: --color-accent !important; important overrides style selector's color atribute*/
+        &:is(path) {
+            fill: var(--color-accent);
+        }
+    }
+    
+    max-width: 20em;
+    margin-block: 2em;
+    
+    overflow: visible;
+
+    path {
+        transition: 300ms;
+        cursor: pointer;
+    }
+
+    &:has(path:hover) {
+        path:not(:hover) {
+            opacity: 0.5;
+        }
+    }
+}
+
+.legend {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+    border: 1px solid black;
+    gap: 1em;
+    padding: 1em;
+    
+    li {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    .swatch {
+        width: 1em;
+        aspect-ratio: 1/1;
+        /* display: inline-block; */
+        background-color: var(--color);
+    }
+
+    .selected {
+        .swatch {
+            background-color: var(--color-accent);
+        }
+    }
+
+}
+
+.searchBar {
+    margin: 1em 0;
+    width: 100%;
+    font-size: 1em;
 }

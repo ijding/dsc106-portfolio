@@ -117,9 +117,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     }
     containerElement.innerHTML = ''; // empties the given containerElement
 
-    if (!projects) { // this replaces the content with a placeholder if 'projects' is missing/broken
+    if (!projects || projects.length == 0) { // this replaces the content with a placeholder if 'projects' is missing/broken
         const article = document.createElement('article');
-        article.innerHTML = `<${headingLevel}>No projects to display right now. Come back soon!</${headingLevel}>`
+        article.innerHTML = `<${headingLevel}>No projects to display right now...</${headingLevel}>`
         containerElement.appendChild(article);
         return;
     }
@@ -130,7 +130,9 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
         // }
         article.innerHTML = `
-            <${headingLevel}>${project.title}</${headingLevel}>
+            <div>
+                <${headingLevel}>${project.title} (${project.year})</${headingLevel}>
+            </div>
             <img src="${project.image}" alt="${project.title}">
             <p>${project.description}</p>
         `;
